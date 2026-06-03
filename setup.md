@@ -8,7 +8,7 @@ Comptez deux onglets de terminal : un pour le back, un pour le front.
 ## 0. Prérequis
 
 - git
-- Java 11 (pour le back) — vérifier : `java -version`
+- Java 21 (pour le back) — vérifier : `java -version`
 - Node 18+ et npm (pour le front) — vérifier : `node -v`
 
 ## 1. Récupérer le repo
@@ -26,49 +26,42 @@ git clone https://github.com/FlorisTisseyre/atelier.git
 cd atelier
 ```
 
-## 2. Cloner les deux applications
+## 2. Installer en une commande (optionnel)
 
-Les deux apps vivent dans un sous-dossier `app/`. À copier-coller tel quel
-depuis le dossier `atelier` :
+Les deux apps sont déjà dans le repo, sous `app/` (sources vendorisées). Un
+script prépare tout — deps du front + vérification que le back compile :
 
 ```bash
-mkdir -p app && cd app
-git clone https://github.com/gothinkster/spring-boot-realworld-example-app.git
-git clone https://github.com/gothinkster/react-redux-realworld-example-app.git
-cd ..
+./install.sh
 ```
 
+Sinon, faites les étapes 3 et 4 à la main.
+
 ## 3. Lancer le back (onglet 1)
+
+Le back tourne en Java 21 (Spring Boot 3.2, Gradle 8.7). Vérifiez que
+`java -version` affiche bien un 21.
 
 ```bash
 cd app/spring-boot-realworld-example-app
 ./gradlew bootRun
 ```
 
-Le premier lancement télécharge les dépendances, c'est normal que ce soit long.
+Le premier lancement télécharge Gradle et les dépendances, c'est normal que ce
+soit long.
 
 Vérifier que ça tourne : ouvrir http://localhost:8080/tags dans un navigateur,
 vous devez voir du JSON.
 
-## 4. Câbler puis lancer le front (onglet 2)
+## 4. Lancer le front (onglet 2)
+
+Rien à câbler : le front pointe déjà sur http://localhost:8080, et `npm start`
+gère le port 4100 et le flag OpenSSL legacy.
 
 ```bash
 cd app/react-redux-realworld-example-app
 npm install
-```
-
-Par défaut le front tape sur une API publique. Pour le brancher sur VOTRE back
-local, éditez `src/agent.js` et remplacez la valeur de `API_ROOT` par :
-
-```
-http://localhost:8080
-```
-
-Puis démarrez le serveur. Le projet utilise une vieille version de
-react-scripts : sur un Node récent, il faut le flag OpenSSL legacy.
-
-```bash
-NODE_OPTIONS=--openssl-legacy-provider npm start
+npm start
 ```
 
 Le front s'ouvre sur http://localhost:4100
@@ -77,13 +70,15 @@ Le front s'ouvre sur http://localhost:4100
 ## Dépannage
 
 - Le front plante au démarrage avec une erreur OpenSSL / `digital envelope`
-  → vous avez oublié `NODE_OPTIONS=--openssl-legacy-provider` devant `npm start`.
+  → `npm start` inclut déjà `NODE_OPTIONS=--openssl-legacy-provider`. L'erreur
+    n'arrive que si vous lancez `react-scripts` sans passer par `npm start`.
 
 - `./gradlew` : permission refusée
   → `chmod +x gradlew` puis relancer.
 
 - Mauvaise version de Java
-  → le back exige Java 11. Vérifiez avec `java -version` et ajustez votre JDK.
+  → le back exige Java 21. Vérifiez avec `java -version` et ajustez votre JDK
+    (ex. `sdk install java 21.0.3-tem`).
 
 - Le front s'affiche mais aucune donnée / erreurs réseau
   → vérifiez que le back tourne (http://localhost:8080/tags) et que `API_ROOT`
