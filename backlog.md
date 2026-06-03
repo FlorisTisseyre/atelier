@@ -1,18 +1,10 @@
 # Le backlog
 
-## Bugs
-
-1. La page d'accueil plante pour les utilisateurs ayant déjà visité l'application.
-2. L'inscription échoue si les champs sont pré-remplis par le navigateur.
-3. Le nom d'utilisateur s'affiche en double dans la barre de navigation.
-
-![Double affichage du nom d'utilisateur dans la nav](backlog-screenshots/nav-double-username.png)
+Vous n'aurez pas le temps de tout faire. C'est normal : le backlog est plus long
+que le créneau. Attaquez-les dans l'ordre, de haut en bas, et abattez-en un
+maximum.
 
 ## Features
-
-Vous n'aurez pas le temps de tout faire. C'est normal : le backlog est plus long
-que le créneau. Prenez les items dans l'ordre que vous voulez, abattez-en un
-maximum.
 
 1. Brouillons : sauver un article sans le publier, retrouver ses brouillons, le
    publier quand il est prêt.
@@ -35,9 +27,17 @@ maximum.
 Chaque item tient en une phrase. C'est volontaire : à vous d'en faire une
 version qui tient la route.
 
+## Bugs
+
+1. La page d'accueil plante pour les utilisateurs ayant déjà visité l'application.
+2. L'inscription échoue si les champs sont pré-remplis par le navigateur.
+3. Le nom d'utilisateur s'affiche en double dans la barre de navigation.
+
+![Double affichage du nom d'utilisateur dans la nav](backlog-screenshots/nav-double-username.png)
+
 ## Mise en route
 
-Le setup (back, front, Claude Code) est décrit dans `SETUP.md` à la racine.
+Le setup (back, front, Claude Code) est décrit dans `setup.md` à la racine.
 Lancez l'agent depuis `app/` pour qu'il voie le front et le back :
 
 ```bash

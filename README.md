@@ -1,8 +1,8 @@
 # Atelier
 
-Bienvenue. Ce dépôt contient tout ce qu'il faut pour participer à l'atelier "IA = Ingénieur Agumenté ou Ingénieur Aliéné" et qui dure 1h45.
+Bienvenue. Ce dépôt contient tout ce qu'il faut pour participer à l'atelier "IA = Ingénieur Augmenté ou Ingénieur Aliéné" et qui dure 1h45.
 
-1. Commencez par `SETUP.md` : installation, lancement du back et du front,
+1. Commencez par `setup.md` : installation, lancement du back et du front,
    puis votre agent de code.
 2. Une fois que tout tourne, ouvrez `backlog.md` : le brief de la première
    phase.
