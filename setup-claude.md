@@ -18,3 +18,25 @@ Lancez Claude Code depuis `app/` pour qu'il voie le front et le back :
 cd app
 claude
 ```
+
+## Changer la clé d'API
+
+Si vous avez besoin de changer la clé, plusieurs options :
+
+**Variable d'environnement** (recommandé) — relancez le terminal puis :
+
+```bash
+export ANTHROPIC_API_KEY="nouvelle-cle"
+```
+
+**Via le menu de configuration** — dans Claude Code, tapez `/config`.
+
+**Via `~/.claude/settings.json`** :
+
+```json
+{
+  "env": {
+    "ANTHROPIC_API_KEY": "nouvelle-cle"
+  }
+}
+```
