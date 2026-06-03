@@ -7,3 +7,6 @@ app/backend/.gradle/
 app/backend/build/
 app/backend/dev.db
 app/backend/gradle.properties
+
+# Artefacts de test UI (Playwright MCP)
+.playwright-mcp/
