@@ -11,30 +11,17 @@ Comptez deux onglets de terminal : un pour le back, un pour le front.
 - Java 21 (pour le back) — vérifier : `java -version`
 - Node 18+ et npm (pour le front) — vérifier : `node -v`
 
-## 1. Récupérer le repo
-
-```bash
-git clone git@github-perso:FlorisTisseyre/atelier.git
-cd atelier
-```
-
-Si vous n'avez pas configuré l'alias SSH `github-perso` (c'est très probable),
-utilisez plutôt l'adresse HTTPS :
-
-```bash
-git clone https://github.com/FlorisTisseyre/atelier.git
-cd atelier
-```
 
 ## 2. Installer en une commande (optionnel)
 
-Les deux apps sont déjà dans le repo, sous `app/` (sources vendorisées). Un
+Les deux apps sont déjà dans le repo, sous `app/` (sources clonées). Un
 script prépare tout — deps du front + vérification que le back compile :
 
 ```bash
 ./install.sh
 ```
 
+À la fin de ce script, vous aurez les instructions exactes pour lancer back et front.
 Sinon, faites les étapes 3 et 4 à la main.
 
 ## 3. Lancer le back (onglet 1)
@@ -46,9 +33,6 @@ Le back tourne en Java 21 (Spring Boot 3.2, Gradle 8.7). Vérifiez que
 cd app/backend
 ./gradlew bootRun
 ```
-
-Le premier lancement télécharge Gradle et les dépendances, c'est normal que ce
-soit long.
 
 Vérifier que ça tourne : ouvrir http://localhost:8080/tags dans un navigateur,
 vous devez voir du JSON.

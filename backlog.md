@@ -1,26 +1,14 @@
 # Le backlog
 
-## Le produit
+## Bugs
 
-Conduit est un clone de Medium. Les utilisateurs publient des articles, les
-commentent, les mettent en favori, suivent d'autres auteurs.
+1. La page d'accueil plante pour les utilisateurs ayant déjà visité l'application.
+2. L'inscription échoue si les champs sont pré-remplis par le navigateur.
+3. Le nom d'utilisateur s'affiche en double dans la barre de navigation.
 
-Vous travaillez sur l'application complète, dans `app/` :
+![Double affichage du nom d'utilisateur dans la nav](backlog-screenshots/nav-double-username.png)
 
-- `app/backend` — le backend (Spring Boot) ;
-- `app/frontend` — le frontend (React/Redux).
-
-## La situation
-
-Vous venez d'être embauchés dans l'équipe qui maintient Conduit. Premier jour,
-on vous tend le backlog et on vous demande d'avancer. Vite. Ici l'équipe livre
-avec l'IA, c'est la norme.
-
-Le seul critère : que ça marche et que ce soit démontrable à la fin du créneau.
-Le nombre d'items bouclés compte. Déléguez à l'agent, prenez ce qu'il propose,
-enchaînez.
-
-## Le backlog
+## Features
 
 Vous n'aurez pas le temps de tout faire. C'est normal : le backlog est plus long
 que le créneau. Prenez les items dans l'ordre que vous voulez, abattez-en un
