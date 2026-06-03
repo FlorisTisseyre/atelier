@@ -7,8 +7,8 @@ commentent, les mettent en favori, suivent d'autres auteurs.
 
 Vous travaillez sur l'application complète, dans `app/` :
 
-- `app/spring-boot-realworld-example-app` — le backend (Spring Boot) ;
-- `app/react-redux-realworld-example-app` — le frontend (React/Redux).
+- `app/backend` — le backend (Spring Boot) ;
+- `app/frontend` — le frontend (React/Redux).
 
 ## La situation
 

@@ -6,15 +6,16 @@
 # 'npm start' embarque le flag OpenSSL legacy + le port 4100.
 #
 # Le back tourne en Java 21 (Spring Boot 3.2, Gradle 8.7). Si le java par defaut
-# n'est pas un 21, ce script en cherche un (java_home / sdkman) pour la build.
+# n'est pas un 21, ce script en cherche un (java_home / sdkman, dont le
+# .sdkmanrc du back) pour la build.
 #
 # Usage : ./install.sh
 #
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-BACK="$ROOT/app/spring-boot-realworld-example-app"
-FRONT="$ROOT/app/react-redux-realworld-example-app"
+BACK="$ROOT/app/backend"
+FRONT="$ROOT/app/frontend"
 
 info(){ printf '\033[1;34m==>\033[0m %s\n' "$*"; }
 ok(){   printf '\033[1;32m ok\033[0m %s\n' "$*"; }
@@ -29,6 +30,19 @@ jver(){
   [ -x "$b" ] || return 1
   v="$("$b" -version 2>&1 | head -1 | grep -oE '"[0-9._]+"' | tr -d '"')" || return 1
   case "$v" in 1.*) echo "${v#1.}" | cut -d. -f1 ;; *) echo "$v" | cut -d. -f1 ;; esac
+}
+
+# Home d'un JDK 21 via sdkman + le .sdkmanrc du back : installe le JDK declare
+# s'il manque, puis renvoie son JAVA_HOME. Vide si sdkman ou .sdkmanrc absents.
+sdkman_java_home(){
+  local init="$HOME/.sdkman/bin/sdkman-init.sh"
+  [ -r "$init" ] && [ -f "$BACK/.sdkmanrc" ] || return 1
+  ( set +u
+    . "$init"
+    cd "$BACK" || exit 1
+    sdk env install >/dev/null 2>&1 || true
+    sdk env >/dev/null 2>&1 || exit 1
+    [ -n "${JAVA_HOME:-}" ] && echo "$JAVA_HOME" ) || return 1
 }
 
 # Home d'un JDK 21. Vide si le java par defaut est deja un 21 (rien a exporter),
@@ -49,6 +63,8 @@ find_java21(){
       [ "$(jver "${d}bin/java" || echo 0)" = 21 ] && { echo "${d%/}"; return 0; }
     done
   fi
+  h="$(sdkman_java_home || true)"
+  [ -n "$h" ] && [ "$(jver "$h/bin/java" || echo 0)" = 21 ] && { echo "$h"; return 0; }
   return 1
 }
 
@@ -94,12 +110,12 @@ cat <<EOF
 === Pret ===
 
 Back (onglet 1) :
-    cd app/spring-boot-realworld-example-app
+    cd app/backend
     ${BOOT_PREFIX}./gradlew bootRun
     -> http://localhost:8080/tags doit renvoyer du JSON
 
 Front (onglet 2) :
-    cd app/react-redux-realworld-example-app && npm start
+    cd app/frontend && npm start
     -> http://localhost:4100
 
 EOF

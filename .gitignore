@@ -2,8 +2,8 @@
 .idea/
 
 # Dependances / build (les sources des apps sont vendorisees dans app/)
-app/react-redux-realworld-example-app/node_modules/
-app/spring-boot-realworld-example-app/.gradle/
-app/spring-boot-realworld-example-app/build/
-app/spring-boot-realworld-example-app/dev.db
-app/spring-boot-realworld-example-app/gradle.properties
+app/frontend/node_modules/
+app/backend/.gradle/
+app/backend/build/
+app/backend/dev.db
+app/backend/gradle.properties

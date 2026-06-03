@@ -43,7 +43,7 @@ Le back tourne en Java 21 (Spring Boot 3.2, Gradle 8.7). Vérifiez que
 `java -version` affiche bien un 21.
 
 ```bash
-cd app/spring-boot-realworld-example-app
+cd app/backend
 ./gradlew bootRun
 ```
 
@@ -59,7 +59,7 @@ Rien à câbler : le front pointe déjà sur http://localhost:8080, et `npm star
 gère le port 4100 et le flag OpenSSL legacy.
 
 ```bash
-cd app/react-redux-realworld-example-app
+cd app/frontend
 npm install
 npm start
 ```
