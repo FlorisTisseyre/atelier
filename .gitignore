@@ -1,0 +1,5 @@
+# IDE
+.idea/
+
+# Apps RealWorld (repos externes, clonés dans app/, non versionnés ici)
+app/
