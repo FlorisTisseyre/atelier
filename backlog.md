@@ -8,7 +8,17 @@ La **référence** (`F` pour feature, `B` pour bug) ne change jamais et on incr�
   ![Double affichage du nom d'utilisateur dans la nav](backlog-screenshots/nav-double-username.png)
 
 
-- **F1** — Brouillons : sauver un article sans le publier, retrouver ses brouillons, le publier quand il est prêt.
+- [ ] **F1** — Brouillons : sauver un article sans le publier, retrouver ses brouillons, le publier quand il est prêt.
+![Erreur](backlog-screenshots/B2.png)
+
+- [ ] **B1** — La page d'accueil plante pour les utilisateurs ayant déjà visité l'application.
+
+
+- **B2** — L'inscription échoue si les champs sont pré-remplis par le navigateur.
+
+
+- **B4** — La publication d'un article échoue quand le champ « What's this article about? » est laissé vide.
+  ![Erreur](backlog-screenshots/B4.png)
 
 
 - **F2** — Articles épinglés : un auteur peut épingler un de ses articles en haut de son profil.
@@ -50,11 +60,3 @@ La **référence** (`F` pour feature, `B` pour bug) ne change jamais et on incr�
 - **F14** — Blocage : un utilisateur peut en bloquer un autre.
 
 
-- **B1** — La page d'accueil plante pour les utilisateurs ayant déjà visité l'application.
-
-
-- **B2** — L'inscription échoue si les champs sont pré-remplis par le navigateur.
-
-
-- **B4** — La publication d'un article échoue quand le champ « What's this article about? » est laissé vide.
-![Erreur](backlog-screenshots/B4.png)
