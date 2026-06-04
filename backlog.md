@@ -15,7 +15,11 @@ La **référence** (`F` pour feature, `B` pour bug) ne change jamais et on incr�
 - [ ] **F1** — Brouillons : sauver un article sans le publier, retrouver ses brouillons, le publier quand il est prêt.
 ![Erreur](backlog-screenshots/B2.png)
 
-- [ ] **B1** — La page d'accueil plante pour les utilisateurs ayant déjà visité l'application.
+- [x] **B1** — La page d'accueil plante pour les utilisateurs ayant déjà visité l'application.
+
+  - **Cause :** `middleware.js:35` — `error.response.body` crash quand `error.response` est `null` (erreur réseau lors du rafraîchissement du JWT au démarrage)
+  - **Fix :** `middleware.js:35` — `error.response ? error.response.body : null`
+  - **Vérification :** `middleware.test.js` — *"promiseMiddleware does not crash when error.response is null"* ✓
 
 
 - **B2** — L'inscription échoue si les champs sont pré-remplis par le navigateur.
