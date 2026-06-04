@@ -74,3 +74,6 @@ La **référence** (`F` pour feature, `B` pour bug) ne change jamais et on incr�
 
 - [ ] **B5** — La liste « Popular Tags » de la page d'accueil reste toujours vide, même quand des articles sont publiés.
 
+  - **Investigation :** backend testé end-to-end (`TagsApiTest`) — `GET /tags` retourne bien les tags après publication. Reducer frontend testé — logique correcte. Bug non reproduit automatiquement, possiblement environnemental (DB vide, JWT périmé causant un rejet de `Promise.all`).
+  - **Tests ajoutés :** `TagsApiTest.java` (intégration full-stack), `home.test.js` (reducer)
+
