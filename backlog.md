@@ -14,9 +14,6 @@ La **référence** (`F` pour feature, `B` pour bug) ne change jamais et on incr�
 - [ ] **B1** — La page d'accueil plante pour les utilisateurs ayant déjà visité l'application.
 
 
-- [ ] **B5** — La liste « Popular Tags » de la page d'accueil reste toujours vide, même quand des articles sont publiés.
-
-
 - **B2** — L'inscription échoue si les champs sont pré-remplis par le navigateur.
 
 
@@ -62,4 +59,6 @@ La **référence** (`F` pour feature, `B` pour bug) ne change jamais et on incr�
 
 - **F14** — Blocage : un utilisateur peut en bloquer un autre.
 
+
+- [ ] **B5** — La liste « Popular Tags » de la page d'accueil reste toujours vide, même quand des articles sont publiés.
 
