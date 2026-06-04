@@ -4,21 +4,33 @@ La **référence** (`F` pour feature, `B` pour bug) ne change jamais et on incr�
 
 # Backlog
 
-- [ ] **B3** — Le nom d'utilisateur s'affiche en double dans la barre de navigation.
+- [x] **B3** — Le nom d'utilisateur s'affiche en double dans la barre de navigation.
   ![Double affichage du nom d'utilisateur dans la nav](backlog-screenshots/nav-double-username.png)
+
+  - **Cause :** `alt={username}` sur l'avatar — le texte alternatif s'affichait en plus du lien quand l'image ne chargeait pas
+  - **Fix :** `Header.js:60` — `alt=""` (image décorative, le nom est déjà dans le lien)
+  - **Vérification :** `Header.test.js` — *"displays username exactly once when logged in"* ✓
 
 
 - [ ] **F1** — Brouillons : sauver un article sans le publier, retrouver ses brouillons, le publier quand il est prêt.
 ![Erreur](backlog-screenshots/B2.png)
 
-- [ ] **B1** — La page d'accueil plante pour les utilisateurs ayant déjà visité l'application.
+- [x] **B1** — La page d'accueil plante pour les utilisateurs ayant déjà visité l'application.
+
+  - **Cause :** `middleware.js:35` — `error.response.body` crash quand `error.response` est `null` (erreur réseau lors du rafraîchissement du JWT au démarrage)
+  - **Fix :** `middleware.js:35` — `error.response ? error.response.body : null`
+  - **Vérification :** `middleware.test.js` — *"promiseMiddleware does not crash when error.response is null"* ✓
 
 
 - **B2** — L'inscription échoue si les champs sont pré-remplis par le navigateur.
 
 
-- **B4** — La publication d'un article échoue quand le champ « What's this article about? » est laissé vide.
+- [x] **B4** — La publication d'un article échoue quand le champ « What's this article about? » est laissé vide.
   ![Erreur](backlog-screenshots/B4.png)
+
+  - **Cause :** `reducers/common.js:40` — `ARTICLE_SUBMITTED` lisait `action.payload.article.slug` même en cas d'erreur de validation (payload = erreurs, pas d'article)
+  - **Fix :** `reducers/common.js` — retourne `state` inchangé si `action.error`
+  - **Vérification :** `reducers/common.test.js` — *"ARTICLE_SUBMITTED does not crash when payload is a validation error"* ✓
 
 
 - **F2** — Articles épinglés : un auteur peut épingler un de ses articles en haut de son profil.
@@ -61,4 +73,7 @@ La **référence** (`F` pour feature, `B` pour bug) ne change jamais et on incr�
 
 
 - [ ] **B5** — La liste « Popular Tags » de la page d'accueil reste toujours vide, même quand des articles sont publiés.
+
+  - **Investigation :** backend testé end-to-end (`TagsApiTest`) — `GET /tags` retourne bien les tags après publication. Reducer frontend testé — logique correcte. Bug non reproduit automatiquement, possiblement environnemental (DB vide, JWT périmé causant un rejet de `Promise.all`).
+  - **Tests ajoutés :** `TagsApiTest.java` (intégration full-stack), `home.test.js` (reducer)
 
