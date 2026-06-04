@@ -4,8 +4,12 @@ La **référence** (`F` pour feature, `B` pour bug) ne change jamais et on incr�
 
 # Backlog
 
-- [ ] **B3** — Le nom d'utilisateur s'affiche en double dans la barre de navigation.
+- [x] **B3** — Le nom d'utilisateur s'affiche en double dans la barre de navigation.
   ![Double affichage du nom d'utilisateur dans la nav](backlog-screenshots/nav-double-username.png)
+
+  - **Cause :** `alt={username}` sur l'avatar — le texte alternatif s'affichait en plus du lien quand l'image ne chargeait pas
+  - **Fix :** `Header.js:60` — `alt=""` (image décorative, le nom est déjà dans le lien)
+  - **Vérification :** `Header.test.js` — *"displays username exactly once when logged in"* ✓
 
 
 - [ ] **F1** — Brouillons : sauver un article sans le publier, retrouver ses brouillons, le publier quand il est prêt.
